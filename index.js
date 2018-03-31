@@ -26,7 +26,7 @@ if(typeof exports == 'undefined'){
 	    	   learningRate: 0.01
 	    	});	
     	} else {
-    		var the_brain = require("brain");
+    		var the_brain = require("brain.js");
 		   	var net = new the_brain.NeuralNetwork({
 		   	   //hiddenLayers: [4,3,2,1],
 		   	   learningRate: 0.01

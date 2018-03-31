@@ -5,6 +5,19 @@
 	</head>
 	<body onload="run()">
 		<script type="text/javascript">
+		(function () {
+		    var old = console.log;
+		    var logger = document.getElementById('log');
+		    console.log = function () {
+		      for (var i = 0; i < arguments.length; i++) {
+			if (typeof arguments[i] == 'object') {
+			    logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(arguments[i], undefined, 2) : arguments[i]) + '<br />';
+			} else {
+			    logger.innerHTML += arguments[i] + '<br />';
+			}
+		      }
+		    }
+		})();
 		function run(){
 			var config = {
 				predictionSteps : 8,
@@ -26,11 +39,12 @@
 			}
 
 			var prediction = brain_predict.predict(config) ;
-
+			console.log("Serie:", config.serie);
 			console.log("PredictionSerie\n" + prediction.prediction + "\n");
 			console.log("Mean error: " + prediction.meanerror) ;
 		}
 		</script>
 		View page source and console output...
+		<pre id="log"></pre>
 	</body>
 </html>

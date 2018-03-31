@@ -5,8 +5,8 @@
 	</head>
 	<body onload="run()">
 		<script type="text/javascript">
-		
-		function run(){
+		document.addEventListener("DOMContentLoaded", function(event) {
+		  function run(){
 			var config = {
 				predictionSteps : 8,
 				step : 4,
@@ -30,8 +30,8 @@
 			console.log("Serie:", config.serie);
 			console.log("PredictionSerie\n" + prediction.prediction + "\n");
 			console.log("Mean error: " + prediction.meanerror) ;
-		}
-		(function () {
+		  }
+		  (function () {
 		    var old = console.log;
 		    var logger = document.getElementById('log');
 		    console.log = function () {
@@ -43,7 +43,8 @@
 			}
 		      }
 		    }
-		})();
+		  })();
+		});
 		</script>
 		View page source and console output...
 		<pre id="log"></pre>
